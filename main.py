@@ -16,7 +16,7 @@ def main():
     clock = pygame.time.Clock()
     dt = 0.0
     player = Player(x = SCREEN_WIDTH / 2, y = SCREEN_HEIGHT / 2)
-
+    
     # game loop (exits when user exits the window from the quit if statement)
     while True:
         log_state()
