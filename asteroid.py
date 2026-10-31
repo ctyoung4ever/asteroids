@@ -14,12 +14,6 @@ class Asteroid(CircleShape):
     def draw(self, screen):
         pygame.draw.circle(screen, "white", self.position, self.radius, LINE_WIDTH)
 
-# Override the update() method so that it moves in a straight line at constant speed. On each frame, it should add (self.velocity * dt) to its position 
-# (get self.velocity from its parent class, CircleShape).
+
     def update(self, dt):
         self.position += self.velocity * dt
-# In main.py before the game loop starts, create a new empty pygame.sprite.Group for the asteroids.
-
-# Like we did with the Player class, set the static containers field of the Asteroid class to the new asteroids group, as well as the updatable and drawable groups. This ensures that every instance of the Asteroid class is automatically added to these groups upon creation.
-
-# Asteroid.containers = (asteroids, updatable, drawable)
