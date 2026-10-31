@@ -28,6 +28,8 @@ class Player(CircleShape):
 
     def update(self, dt: float) -> None:
         keys = pygame.key.get_pressed()
+
+        #timer iteration for shoot timer
         self.shoot_timer -= dt
 
         if keys[pygame.K_a]:
@@ -48,15 +50,15 @@ class Player(CircleShape):
         self.position += rotated_with_speed_vector
 
     def shoot(self) -> None:
+        # if shoot timer hasn't gone to zero don't shoot
         if self.shoot_timer > 0:
             return
+        # set shoot timer
         self.shoot_timer = PLAYER_SHOOT_COOLDOWN_SECONDS
+
+        #shoot the shot at the current player position
         shot = Shot(self.position.x, self.position.y)
+
+        # add velocity to the direction the player is facing
         shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
 
-# Creates a new Shot at the current position of the player.
-# Sets the shot's .velocity attribute:
-# Start with a pygame.Vector2 of (0, 1).
-# .rotate() the vector in the direction the player is facing.
-# Scale it up (multiply by PLAYER_SHOOT_SPEED) to make it move faster.
-# In Player.update in player.py, handle the spacebar (pygame.K_SPACE) and call the shoot method when it's pressed.
