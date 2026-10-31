@@ -12,11 +12,21 @@ def main():
     print(f"Starting Asteroids with pygame version: {pygame.version.ver}")
     print(f"Screen width: {SCREEN_WIDTH}\nScreen height: {SCREEN_HEIGHT}")
 
+    # create two empty groups, one updateable and one drawable
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    # add player class to the two sprite groups
+    Player.containers = (updatable, drawable)
+    
     # FPS setting (called in game loop)
     clock = pygame.time.Clock()
     dt = 0.0
+
+
     player = Player(x = SCREEN_WIDTH / 2, y = SCREEN_HEIGHT / 2)
-    
+
+
     # game loop (exits when user exits the window from the quit if statement)
     while True:
         log_state()
@@ -25,8 +35,9 @@ def main():
                 return
         screen.fill("black")
         # needs to be before the display.flip()
-        player.draw(screen)
-        player.update(dt)
+        updatable.update(dt)
+        for i in drawable:
+            i.draw(screen)
         pygame.display.flip()
         dt = clock.tick(60) / 1000
     
