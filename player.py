@@ -42,8 +42,3 @@ class Player(CircleShape):
         rotated_with_speed_vector = rotated_vector * PLAYER_SPEED * dt
         self.position += rotated_with_speed_vector
         
-
-# Modify the update method in the Player class to call the move method when the W or S key is pressed. 
-# Remember to negate dt for the S key, so the player moves backward.
-
-# Run the game for at least a few seconds. You should now be able to fly around the screen with the W, A, S, and D keys!
