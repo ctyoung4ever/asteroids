@@ -16,8 +16,6 @@ def main():
 
     # set screen vars and print
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    print(f"Starting Asteroids with pygame version: {pygame.version.ver}")
-    print(f"Screen width: {SCREEN_WIDTH}\nScreen height: {SCREEN_HEIGHT}")
 
     # create empty groups, one updateable and one drawable, one for asteroids
     updatable = pygame.sprite.Group()
